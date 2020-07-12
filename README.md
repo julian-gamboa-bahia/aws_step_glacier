@@ -65,7 +65,11 @@ Estariamos perando um cenário de "trabalho pronto" ("StatusCode": "Succeeded")
 	Obte-se desta linha de comando o arquivo "inventario_JSON.txt" que pode ser estudado com ajuda dos arquivos:
 	- ler_inventario_SAIDA_ArchiveId.py (Pare gerar uma lista de ArchiveID)
 	- ler_inventario_SAIDA_DATA.py (Para ver a data de criação de cada elemento)
-+ Já com este ("StatusCode": "Succeeded") pode-se coletar o inventário do VAULT usando:
++ Pode-se criar uma lista de ArchiveID com ajuda do "ler_inventario_SAIDA_ArchiveId.py" e assim poder criar os JOBs de recuperação de dito arquivo (identificado com o ArchiveID) em cada vault usando o comando CLI:
+	```bash
+	aws glacier initiate-job --account-id - --vault-name 2020_abril_06  --job-parameters '{"Type": "archive-retrieval","ArchiveId": "'$line'","Description": "'$lista' '$indice'"}'
+	```
+	Com o intuito de fazer este pedido de "archive-retrieval" de forma massiva foi feito um shell chamdado de "processar.sh" que tem a capacidade de pegar os arquivos da pasta "fazer" para ler o conteúdo de cada arquivo (de nome "x*") e posteriormente colocar dito arquivo na pasta "feitos".
 
 <!---
 
