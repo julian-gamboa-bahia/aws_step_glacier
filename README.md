@@ -8,7 +8,7 @@ Para este fim foi construído inicialmente um sistema caraterziado por:
 	- Lembremos que a consulta desde a CLI é feito com os comandos JSON:
 
 		aws glacier initiate-job --account-id - --vault-name 2020_abril_06 --job-parameters '{"Type": "inventory-retrieval"}'
-
+	- Este procdimento de inventário demora aproximadamente 4 horas.
 + 
 <!---
 
@@ -32,5 +32,6 @@ O0bmSJWCWIJOTojdj_BhQjbdN6jrQ1O-q3A6v79d5MI-2mHbl-1iTnZUk0vhrrL-R44A70KO3767Azzz
 
 Não se esqueça de usar o CACHE das credenciais para agilizar as operações
 
-git config --global credential.helper cache
-git config --global credential.helper 'cache --timeout=13600'
++ git config --global credential.helper cache
+
++ git config --global credential.helper 'cache --timeout=13600'
