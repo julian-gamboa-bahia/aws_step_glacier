@@ -28,3 +28,9 @@ O0bmSJWCWIJOTojdj_BhQjbdN6jrQ1O-q3A6v79d5MI-2mHbl-1iTnZUk0vhrrL-R44A70KO3767Azzz
 + Very easy!
 
 -->
+
+
+Não se esqueça de usar o CACHE das credenciais para agilizar as operações
+
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=13600'
