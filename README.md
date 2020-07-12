@@ -6,9 +6,35 @@ Para este fim foi construído inicialmente um sistema caraterziado por:
 
 + Processamentos de fluxos de dados em JSON:
 	- Lembremos que a consulta desde a CLI é feito com os comandos JSON:
+	```bash
+	aws glacier initiate-job --job-parameters '{"Type": "inventory-retrieval"}' --account-id YOUR_ACCOUNT_ID --region YOUR_REGION --vault-name YOUR_VAULT_NAME 
+	```
 
-		aws glacier initiate-job --account-id - --vault-name 2020_abril_06 --job-parameters '{"Type": "inventory-retrieval"}'
-	- Este procdimento de inventário demora aproximadamente 4 horas.
++ Este procedimento de inventário demora aproximadamente 4 horas, e pode ser monitorado consultando a lista de trabalhos relacionada com dito VAULT:
+	```bash
+	aws glacier list-jobs --account-id - --vault-name 2020_abril_06
+	```
++ Sendo possível esperar como resposta perante a consulta anterior:
+
+```json
+		{
+		    "JobList": [
+		        {
+		            "InventoryRetrievalParameters": {
+		                "Format": "JSON"
+		            }, 
+		            "VaultARN": "arn:aws:glacier:us-east-2:937852338641:vaults/2020_abril_06", 
+		            "Completed": false, 
+		            "JobId": "O0bmSJWCWIJOTojdj_BhQjbdN6jrQ1O-q3A6v79d5MI-2mHbl-1iTnZUk0vhrrL-R44A70KO3767Azzz9STA9mMknVuD", 
+		            "Action": "InventoryRetrieval", 
+		            "CreationDate": "2020-07-12T14:55:22.300Z", 
+		            "StatusCode": "InProgress"
+		        }
+		    ]
+		}
+
+```
+
 + 
 <!---
 
