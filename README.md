@@ -1,4 +1,5 @@
 # Armazenamento "Glacier" no AWS
+## Introdução e método manual
 
 Uma das formas mais econômicas de armazenar arquivos é usando o sistema GLACIER de armazenamento da AWS (https://aws.amazon.com/pt/glacier/), dado que os arquivos armazenados em dito sistema podem-se recuperar facilmente. 
 
@@ -63,13 +64,30 @@ Estariamos perando um cenário de "trabalho pronto" ("StatusCode": "Succeeded")
 	aws glacier get-job-output --account-id - --vault-name 2020_abril_06 --job-id  O0bmSJWCWIJOTojdj_BhQjbdN6jrQ1O-q3A6v79d5MI-2mHbl-1iTnZUk0vhrrL-R44A70KO3767Azzz9STA9mMknVuD inventario_JSON.txt
 	```
 	Obte-se desta linha de comando o arquivo "inventario_JSON.txt" que pode ser estudado com ajuda dos arquivos:
-	- ler_inventario_SAIDA_ArchiveId.py (Pare gerar uma lista de ArchiveID)
-	- ler_inventario_SAIDA_DATA.py (Para ver a data de criação de cada elemento)
-+ Pode-se criar uma lista de ArchiveID com ajuda do "ler_inventario_SAIDA_ArchiveId.py" e assim poder criar os JOBs de recuperação de dito arquivo (identificado com o ArchiveID) em cada vault usando o comando CLI:
+	- **ler_inventario_SAIDA_ArchiveId.py** (Pare gerar uma lista de ArchiveID)
+	- **ler_inventario_SAIDA_DATA.py** (Para ver a data de criação de cada elemento)
++ Pode-se criar uma lista de ArchiveID com ajuda do **"ler_inventario_SAIDA_ArchiveId.py"** e assim poder criar os JOBs de recuperação de dito arquivo (identificado com o ArchiveID) em cada vault usando o comando CLI:
 	```bash
 	aws glacier initiate-job --account-id - --vault-name 2020_abril_06  --job-parameters '{"Type": "archive-retrieval","ArchiveId": "'$line'","Description": "'$lista' '$indice'"}'
 	```
-	Com o intuito de fazer este pedido de "archive-retrieval" de forma massiva foi feito um shell chamdado de "processar.sh" que tem a capacidade de pegar os arquivos da pasta "fazer" para ler o conteúdo de cada arquivo (de nome "x*") e posteriormente colocar dito arquivo na pasta "feitos".
+	Com o intuito de fazer este pedido de "archive-retrieval" de forma massiva foi feito um shell chamdado de **"processar.sh"** que tem a capacidade de pegar os arquivos da pasta "fazer" para ler o conteúdo de cada arquivo (de nome "x*") e posteriormente colocar dito arquivo na pasta "feitos".
+
++ Etapa final na qual se gera uma arquivo único com ajuda do arquivo **"get_ARQUIVOS.py"** prévia execução do comando:
+  
+	```bash
+	aws glacier list-jobs --account-id - --vault-name 2020_abril_06	 > testar	
+	```
+
+	Cabe salientar que será preciso invocar o python na forma:
+
+	```bash
+	python get_ARQUIVOS.py
+	```	
+Ve-se que este processamento manual pode-se transformar numa "Máquina de Estado" com ajuda da plataforma STEP AWS.
+
+# Usando SNS, STEP, e lambda functions:
+
+
 
 <!---
 
