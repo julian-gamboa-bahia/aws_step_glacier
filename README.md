@@ -90,7 +90,7 @@ Como detalhe final é preciso considerar a forma de apagar cada arquivo no VALUT
 aws glacier delete-archive --account-id - --vault-name 2020_abril_06 --archive-id 
 ```	
 
-
+Com o intuito de automatizar dita tarefa pode-se ler o inventáio (**inventario_JSON.txt**) com ajudad do shell **gerar_delete.sh** 
 
 Ve-se que este processamento manual pode-se transformar numa "Máquina de Estado" com ajuda da plataforma STEP AWS.
 
