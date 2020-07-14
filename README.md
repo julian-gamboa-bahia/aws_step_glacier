@@ -83,6 +83,15 @@ Estariamos perando um cenário de "trabalho pronto" ("StatusCode": "Succeeded")
 	```bash
 	python get_ARQUIVOS.py
 	```	
+
+Como detalhe final é preciso considerar a forma de apagar cada arquivo no VALUT (neste exemplo o VAULT é chamado de **2020_abril_06**) isto com ajuda da instrução CLI
+
+```bash
+aws glacier delete-archive --account-id - --vault-name 2020_abril_06 --archive-id 
+```	
+
+
+
 Ve-se que este processamento manual pode-se transformar numa "Máquina de Estado" com ajuda da plataforma STEP AWS.
 
 # Usando SNS, STEP, e lambda functions:
