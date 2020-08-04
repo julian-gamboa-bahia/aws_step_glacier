@@ -96,6 +96,10 @@ Ve-se que este processamento manual pode-se transformar numa "Máquina de Estado
 
 # Usando SNS, STEP, e lambda functions:
 
+# Para saber mais:
+
++ https://d12tkzd8xe838o.cloudfront.net/us-east-2:d81cf72b-c77f-4a8f-987c-0e7207a1469a/EP14-TrilhaTecnica-Storage.mp3
+
 
 
 <!---
