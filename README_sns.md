@@ -17,6 +17,5 @@ A documentação deste serviço (https://aws.amazon.com/pt/sns/getting-started/)
 
  + Criando um tema no SNS:
  
- ![image.png](attachment:image.png)
 
 
